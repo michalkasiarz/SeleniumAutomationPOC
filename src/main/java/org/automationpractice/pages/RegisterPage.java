@@ -71,7 +71,7 @@ public class RegisterPage extends BasePage {
     }
 
     public void chooseTitle(User user) {
-        if (user.getTitle() == "Mr.") {
+        if (user.getTitle().equals("Mr.")) {
             radioButtonMr.click();
         } else {
             radioButtonMrs.click();
@@ -86,10 +86,6 @@ public class RegisterPage extends BasePage {
         inputLastNamePersonalInfo.sendKeys(lastName);
     }
 
-    public void enterEmail(String email) {
-        inputEmail.sendKeys(email);
-    }
-
     public void enterPassword(String password) {
         inputPassword.sendKeys(password);
     }
@@ -99,10 +95,10 @@ public class RegisterPage extends BasePage {
         selectDay.selectByValue(user.getDateOfBirthDay());
 
         Select selectMonth = new Select(selectMonths);
-        selectMonth.selectByValue(user.getDateOfBirthMonth());
+        selectMonth.selectByVisibleText(user.getDateOfBirthMonth() + " ");
 
         Select selectYear = new Select(selectYears);
-        selectYear.selectByValue(user.getDateOfBirthYear());
+        selectYear.selectByVisibleText(user.getDateOfBirthYear() + "  ");
     }
 
     public void enterFirstNameForAddress(String firstName) {
@@ -123,7 +119,7 @@ public class RegisterPage extends BasePage {
 
     public void selectState(User user) {
         Select selectState = new Select(selectStateAddress);
-        selectState.selectByValue(user.getStateAddress());
+        selectState.selectByVisibleText(user.getStateAddress());
     }
 
     public void enterPostalCode(String postalCode) {
@@ -132,7 +128,7 @@ public class RegisterPage extends BasePage {
 
     public void selectCountry(User user) {
         Select selectCountry = new Select(selectCountryAddress);
-        selectCountry.selectByValue(user.getCountryAddress());
+        selectCountry.selectByVisibleText(user.getCountryAddress());
     }
 
     public void enterMobilePhone(String mobilePhoneNumber) {
@@ -151,7 +147,6 @@ public class RegisterPage extends BasePage {
         chooseTitle(user);
         enterFirstNamePersonalInfo(user.getFirstNamePersonalInfo());
         enterLastNamePersonalInfo(user.getLastNamePersonalInfo());
-        enterEmail(user.getEmail());
         enterPassword(user.getPassword());
         selectBirthdate(user);
         enterFirstNameForAddress(user.getFirstNameAddress());

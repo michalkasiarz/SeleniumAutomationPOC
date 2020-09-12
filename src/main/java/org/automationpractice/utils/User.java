@@ -44,9 +44,9 @@ public class User {
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
         postalCodeAddress = faker.address().zipCode();
-        countryAddress = faker.address().country();
+        countryAddress = "United States";
         mobilePhone = faker.phoneNumber().cellPhone();
-        alias = faker.address().fullAddress();
+        alias = faker.address().secondaryAddress();
     }
 
     public String getTitle() {
