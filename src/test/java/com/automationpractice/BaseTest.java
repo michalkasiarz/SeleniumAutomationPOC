@@ -1,15 +1,16 @@
 package com.automationpractice;
 
+import com.automationpractice.pages.LandingPage;
+import com.automationpractice.pages.LoginPage;
 import com.automationpractice.pages.MyAccountPage;
 import com.automationpractice.pages.RegisterPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import com.automationpractice.pages.LandingPage;
-import com.automationpractice.pages.LoginPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.concurrent.TimeUnit;
 
@@ -29,7 +30,9 @@ public abstract class BaseTest {
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         landingPage = new LandingPage(driver);
         driver.get("http://automationpractice.com");
@@ -41,7 +44,7 @@ public abstract class BaseTest {
     @After
     public void tearDown() {
         if (driver != null) {
-//            driver.quit();
+            driver.quit();
         }
     }
 }
