@@ -5,6 +5,7 @@ import org.automationpractice.utils.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
 
 public class RegisterPage extends BasePage {
 
@@ -69,8 +70,99 @@ public class RegisterPage extends BasePage {
         super(driver);
     }
 
+    public void chooseTitle(User user) {
+        if (user.getTitle() == "Mr.") {
+            radioButtonMr.click();
+        } else {
+            radioButtonMrs.click();
+        }
+    }
+
+    public void enterFirstNamePersonalInfo(String firstName) {
+        inputFirstNamePersonalInfo.sendKeys(firstName);
+    }
+
+    public void enterLastNamePersonalInfo(String lastName) {
+        inputLastNamePersonalInfo.sendKeys(lastName);
+    }
+
+    public void enterEmail(String email) {
+        inputEmail.sendKeys(email);
+    }
+
+    public void enterPassword(String password) {
+        inputPassword.sendKeys(password);
+    }
+
+    public void selectBirthdate(User user) {
+        Select selectDay = new Select(selectDays);
+        selectDay.selectByValue(user.getDateOfBirthDay());
+
+        Select selectMonth = new Select(selectMonths);
+        selectMonth.selectByValue(user.getDateOfBirthMonth());
+
+        Select selectYear = new Select(selectYears);
+        selectYear.selectByValue(user.getDateOfBirthYear());
+    }
+
+    public void enterFirstNameForAddress(String firstName) {
+        inputFirstNameAddress.sendKeys(firstName);
+    }
+
+    public void enterLastNameForAddress(String lastName) {
+        inputLastNameAddress.sendKeys(lastName);
+    }
+
+    public void enterFullAddress(String address) {
+        inputAddressAddress.sendKeys(address);
+    }
+
+    public void enterCity(String city) {
+        inputCityAddress.sendKeys(city);
+    }
+
+    public void selectState(User user) {
+        Select selectState = new Select(selectStateAddress);
+        selectState.selectByValue(user.getStateAddress());
+    }
+
+    public void enterPostalCode(String postalCode) {
+        inputPostalCodeAddress.sendKeys(postalCode);
+    }
+
+    public void selectCountry(User user) {
+        Select selectCountry = new Select(selectCountryAddress);
+        selectCountry.selectByValue(user.getCountryAddress());
+    }
+
+    public void enterMobilePhone(String mobilePhoneNumber) {
+        inputMobilePhoneAddress.sendKeys(mobilePhoneNumber);
+    }
+
+    public void enterAliasAddress(String aliasAddress) {
+        inputAliasAddress.sendKeys(aliasAddress);
+    }
+
+    public void clickButtonRegister() {
+        buttonRegister.click();
+    }
+
     public void register(User user) {
-        // TO DO:
-        // body of the register method
+        chooseTitle(user);
+        enterFirstNamePersonalInfo(user.getFirstNamePersonalInfo());
+        enterLastNamePersonalInfo(user.getLastNamePersonalInfo());
+        enterEmail(user.getEmail());
+        enterPassword(user.getPassword());
+        selectBirthdate(user);
+        enterFirstNameForAddress(user.getFirstNameAddress());
+        enterLastNameForAddress(user.getLastNameAddress());
+        enterFullAddress(user.getAddressAddress());
+        enterCity(user.getCityAddress());
+        selectState(user);
+        enterPostalCode(user.getPostalCodeAddress());
+        selectCountry(user);
+        enterMobilePhone(user.getMobilePhone());
+        enterAliasAddress(user.getAlias());
+        clickButtonRegister();
     }
 }

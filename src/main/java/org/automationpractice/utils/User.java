@@ -20,6 +20,7 @@ public class User {
     private final String addressAddress;
     private final String cityAddress;
     private final String stateAddress;
+    private final String postalCodeAddress;
     private final String countryAddress;
     private final String mobilePhone;
     private final String alias;
@@ -42,6 +43,7 @@ public class User {
         addressAddress = faker.address().fullAddress();
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
+        postalCodeAddress = faker.address().zipCode();
         countryAddress = faker.address().country();
         mobilePhone = faker.phoneNumber().cellPhone();
         alias = faker.address().fullAddress();
@@ -110,4 +112,6 @@ public class User {
     public String getAlias() {
         return alias;
     }
+
+    public String getPostalCodeAddress() { return postalCodeAddress; }
 }
