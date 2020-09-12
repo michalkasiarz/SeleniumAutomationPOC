@@ -1,7 +1,7 @@
-package org.automationpractice.pages;
+package com.automationpractice.pages;
 
-import org.automationpractice.BasePage;
-import org.automationpractice.utils.User;
+import com.automationpractice.BasePage;
+import com.automationpractice.utils.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

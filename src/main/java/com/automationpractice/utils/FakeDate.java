@@ -1,4 +1,4 @@
-package org.automationpractice.utils;
+package com.automationpractice.utils;
 
 import com.github.javafaker.Faker;
 

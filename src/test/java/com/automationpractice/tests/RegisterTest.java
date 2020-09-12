@@ -1,6 +1,7 @@
-package org.automationpractice;
+package com.automationpractice.tests;
 
-import org.automationpractice.utils.User;
+import com.automationpractice.BaseTest;
+import com.automationpractice.utils.User;
 import org.junit.Test;
 
 import java.text.ParseException;

@@ -1,9 +1,9 @@
-package org.automationpractice;
+package com.automationpractice;
 
+import com.automationpractice.pages.RegisterPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.automationpractice.pages.LandingPage;
-import org.automationpractice.pages.LoginPage;
-import org.automationpractice.pages.RegisterPage;
+import com.automationpractice.pages.LandingPage;
+import com.automationpractice.pages.LoginPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;

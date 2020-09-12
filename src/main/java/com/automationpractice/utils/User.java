@@ -1,4 +1,4 @@
-package org.automationpractice.utils;
+package com.automationpractice.utils;
 
 import com.github.javafaker.Faker;
 
@@ -43,7 +43,7 @@ public class User {
         addressAddress = faker.address().fullAddress();
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
-        postalCodeAddress = faker.address().zipCode();
+        postalCodeAddress = String.format(faker.address().zipCode(), "ddddd");
         countryAddress = "United States";
         mobilePhone = faker.phoneNumber().cellPhone();
         alias = faker.address().secondaryAddress();
