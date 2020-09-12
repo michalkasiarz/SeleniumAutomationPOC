@@ -45,7 +45,8 @@ public class User {
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
 
-        postalCodeAddress = String.valueOf(10000 + new Random().nextInt(90000));
+        FakePostalCode fakePostalCode = new FakePostalCode();
+        postalCodeAddress = fakePostalCode.getPostalCode();
         countryAddress = "United States";
         mobilePhone = faker.phoneNumber().cellPhone();
         alias = faker.address().secondaryAddress();
