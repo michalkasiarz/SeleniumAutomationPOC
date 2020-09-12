@@ -5,19 +5,22 @@ import com.automationpractice.utils.User;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.util.concurrent.TimeUnit;
 
-
-public class RegisterTest extends BaseTest {
+public class RegisterAndLoginTest extends BaseTest {
 
     @Test
-    public void registerTest() throws ParseException {
+    public void RegisterAndloginTest() throws ParseException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         loginPage.fillEmailRegister(randomUser.getEmail());
         loginPage.clickOnCreateAccountButtonRegister();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         registerPage.register(randomUser);
         myAccountPage.clickOnLogoutButton();
+        loginPage.clickOnSignInButtonLogin();
+        loginPage.fillEmailLogin(randomUser.getEmail());
+        loginPage.fillPasswordLogin(randomUser.getPassword());
+        loginPage.clickOnSignInButtonLogin();
+        myAccountPage.clickOnLogoutButton();
     }
+
 }

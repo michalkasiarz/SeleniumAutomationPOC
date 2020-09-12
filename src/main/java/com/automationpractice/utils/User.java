@@ -3,6 +3,7 @@ package com.automationpractice.utils;
 import com.github.javafaker.Faker;
 
 import java.text.ParseException;
+import java.util.Locale;
 import java.util.Random;
 
 public class User {
@@ -26,7 +27,7 @@ public class User {
     private final String alias;
 
     public User() throws ParseException {
-        Faker faker = new Faker();
+        Faker faker = new Faker(new Locale("en-US"));
         title = new Random().nextBoolean() ? "Mr." : "Mrs.";
         firstNamePersonalInfo = faker.name().firstName();
         lastNamePersonalInfo = faker.name().lastName();
@@ -43,7 +44,8 @@ public class User {
         addressAddress = faker.address().fullAddress();
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
-        postalCodeAddress = String.format(faker.address().zipCode(), "ddddd");
+
+        postalCodeAddress = String.valueOf(10000 + new Random().nextInt(90000));
         countryAddress = "United States";
         mobilePhone = faker.phoneNumber().cellPhone();
         alias = faker.address().secondaryAddress();

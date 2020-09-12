@@ -1,5 +1,6 @@
 package com.automationpractice;
 
+import com.automationpractice.pages.MyAccountPage;
 import com.automationpractice.pages.RegisterPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import com.automationpractice.pages.LandingPage;
@@ -19,6 +20,7 @@ public abstract class BaseTest {
     protected LandingPage landingPage;
     protected LoginPage loginPage;
     protected RegisterPage registerPage;
+    protected MyAccountPage myAccountPage;
 
     @BeforeClass
     public static void setupWebDriverManager() {
@@ -33,6 +35,7 @@ public abstract class BaseTest {
         driver.get("http://automationpractice.com");
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
+        myAccountPage = new MyAccountPage(driver);
     }
 
     @After
