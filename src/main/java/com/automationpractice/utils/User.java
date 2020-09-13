@@ -2,6 +2,7 @@ package com.automationpractice.utils;
 
 import com.github.javafaker.Faker;
 
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.Locale;
 import java.util.Random;
@@ -26,7 +27,7 @@ public class User {
     private final String mobilePhone;
     private final String alias;
 
-    public User() throws ParseException {
+    public User() throws ParseException, NoSuchAlgorithmException {
         Faker faker = new Faker(new Locale("en-US"));
         title = new Random().nextBoolean() ? "Mr." : "Mrs.";
         firstNamePersonalInfo = faker.name().firstName();
