@@ -1,0 +1,20 @@
+package com.automationpractice.pages;
+
+import com.automationpractice.BasePage;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class MyAddresses extends BasePage {
+
+    @FindBy(css = "p.alert.alert-warning")
+    private WebElement pAlertNoAddress;
+
+    public MyAddresses(WebDriver driver) {
+        super(driver);
+    }
+
+    public WebElement getAlertNoAddress() {
+        return pAlertNoAddress;
+    }
+}

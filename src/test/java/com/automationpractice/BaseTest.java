@@ -24,6 +24,7 @@ public abstract class BaseTest {
     protected RegisterPage registerPage;
     protected MyAccountPage myAccountPage;
     protected MyWishlistsPage myWishlistsPage;
+    protected MyAddresses myAddresses;
 
     @BeforeClass
     public static void setupWebDriverManager() {
@@ -44,6 +45,7 @@ public abstract class BaseTest {
         registerPage = new RegisterPage(driver);
         myAccountPage = new MyAccountPage(driver);
         myWishlistsPage = new MyWishlistsPage(driver);
+        myAddresses = new MyAddresses(driver);
     }
 
     @After
