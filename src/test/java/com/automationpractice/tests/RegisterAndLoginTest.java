@@ -15,8 +15,10 @@ public class RegisterAndLoginTest extends BaseTest {
     public void RegisterAndloginTest() throws ParseException, NoSuchAlgorithmException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
+        waitForLoad(driver);
         loginPage.fillEmailRegister(randomUser.getEmail());
         loginPage.clickOnCreateAccountButtonRegister();
+        waitForLoad(driver);
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
         waitForLoad(driver);

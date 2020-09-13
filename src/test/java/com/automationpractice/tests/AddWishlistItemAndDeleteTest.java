@@ -6,7 +6,6 @@ import org.junit.Test;
 
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
-import java.util.concurrent.TimeUnit;
 
 public class AddWishlistItemAndDeleteTest extends BaseTest {
 
@@ -14,12 +13,14 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
     public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
+        waitForLoad(driver);
         loginPage.fillEmailRegister(randomUser.getEmail());
         loginPage.clickOnCreateAccountButtonRegister();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        waitForLoad(driver);
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
         myAccountPage.clickOnButtonMyWishlists();
+        waitForLoad(driver);
         myWishlistsPage.enterItemName("shoes");
         myWishlistsPage.clickOnSaveItemButton();
         myWishlistsPage.enterItemName("jacket");

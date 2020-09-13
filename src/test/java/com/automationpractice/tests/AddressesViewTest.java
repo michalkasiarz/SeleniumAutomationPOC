@@ -15,6 +15,7 @@ public class AddressesViewTest extends BaseTest {
     public void addressesViewTest() throws ParseException, NoSuchAlgorithmException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
+        waitForLoad(driver);
         loginPage.fillEmailRegister(randomUser.getEmail());
         loginPage.clickOnCreateAccountButtonRegister();
         waitForLoad(driver);
