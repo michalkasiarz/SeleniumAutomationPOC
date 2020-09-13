@@ -143,7 +143,7 @@ public class RegisterPage extends BasePage {
         buttonRegister.click();
     }
 
-    public void register(User user) {
+    public void fillRegistrationForm(User user) {
         chooseTitle(user);
         enterFirstNamePersonalInfo(user.getFirstNamePersonalInfo());
         enterLastNamePersonalInfo(user.getLastNamePersonalInfo());
@@ -158,6 +158,5 @@ public class RegisterPage extends BasePage {
         selectCountry(user);
         enterMobilePhone(user.getMobilePhone());
         enterAliasAddress(user.getAlias());
-        clickButtonRegister();
     }
 }

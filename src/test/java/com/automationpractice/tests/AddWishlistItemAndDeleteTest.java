@@ -7,11 +7,10 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
-
-public class RegisterTest extends BaseTest {
+public class AddWishlistItemAndDeleteTest extends BaseTest {
 
     @Test
-    public void registerTest() throws ParseException {
+    public void addItemToWishListAndDeleteIt() throws ParseException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         loginPage.fillEmailRegister(randomUser.getEmail());
@@ -19,6 +18,13 @@ public class RegisterTest extends BaseTest {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
-      //  myAccountPage.clickOnLogoutButton();
+        myAccountPage.clickOnButtonMyWishlists();
+        myWishlistsPage.enterItemName("shoes");
+        myWishlistsPage.clickOnSaveItemButton();
+        myWishlistsPage.enterItemName("jacket");
+        myWishlistsPage.clickOnSaveItemButton();
+        myWishlistsPage.enterItemName("trousers");
+        myWishlistsPage.clickOnSaveItemButton();
+        myWishlistsPage.deleteItemFromWishlist("shoes");
     }
 }

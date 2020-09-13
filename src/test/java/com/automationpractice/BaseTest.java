@@ -1,9 +1,6 @@
 package com.automationpractice;
 
-import com.automationpractice.pages.LandingPage;
-import com.automationpractice.pages.LoginPage;
-import com.automationpractice.pages.MyAccountPage;
-import com.automationpractice.pages.RegisterPage;
+import com.automationpractice.pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
@@ -22,6 +19,7 @@ public abstract class BaseTest {
     protected LoginPage loginPage;
     protected RegisterPage registerPage;
     protected MyAccountPage myAccountPage;
+    protected MyWishlistsPage myWishlistsPage;
 
     @BeforeClass
     public static void setupWebDriverManager() {
@@ -32,19 +30,20 @@ public abstract class BaseTest {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         landingPage = new LandingPage(driver);
         driver.get("http://automationpractice.com");
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
         myAccountPage = new MyAccountPage(driver);
+        myWishlistsPage = new MyWishlistsPage(driver);
     }
 
     @After
     public void tearDown() {
         if (driver != null) {
-            driver.quit();
+//            driver.quit();
         }
     }
 }

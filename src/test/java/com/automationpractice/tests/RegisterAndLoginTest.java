@@ -14,7 +14,8 @@ public class RegisterAndLoginTest extends BaseTest {
         landingPage.clickButtonSignIn();
         loginPage.fillEmailRegister(randomUser.getEmail());
         loginPage.clickOnCreateAccountButtonRegister();
-        registerPage.register(randomUser);
+        registerPage.fillRegistrationForm(randomUser);
+        registerPage.clickButtonRegister();
         myAccountPage.clickOnLogoutButton();
         loginPage.clickOnSignInButtonLogin();
         loginPage.fillEmailLogin(randomUser.getEmail());
