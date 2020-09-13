@@ -19,6 +19,6 @@ public class RegisterTest extends BaseTest {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
-      //  myAccountPage.clickOnLogoutButton();
+        myAccountPage.clickOnLogoutButton();
     }
 }

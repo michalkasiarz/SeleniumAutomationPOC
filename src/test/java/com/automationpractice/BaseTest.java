@@ -30,7 +30,7 @@ public abstract class BaseTest {
     public void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         landingPage = new LandingPage(driver);
         driver.get("http://automationpractice.com");
@@ -43,7 +43,7 @@ public abstract class BaseTest {
     @After
     public void tearDown() {
         if (driver != null) {
-//            driver.quit();
+            driver.quit();
         }
     }
 }
