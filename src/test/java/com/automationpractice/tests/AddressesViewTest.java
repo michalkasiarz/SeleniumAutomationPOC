@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertFalse;
 
 public class AddressesViewTest extends BaseTest {
 
@@ -22,6 +22,6 @@ public class AddressesViewTest extends BaseTest {
         registerPage.clickButtonRegister();
         myAccountPage.clickOnButtonMyAddresses();
         waitForLoad(driver);
-        assertNull(myAddresses.getAlertNoAddress());
+        assertFalse(myAddresses.getAlertNoAddress().isDisplayed());
     }
 }
