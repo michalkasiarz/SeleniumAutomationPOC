@@ -10,11 +10,18 @@ public class MyAddresses extends BasePage {
     @FindBy(css = "p.alert.alert-warning")
     private WebElement pAlertNoAddress;
 
+    @FindBy(css = "h3.page-subheading")
+    private WebElement addressAlias;
+
     public MyAddresses(WebDriver driver) {
         super(driver);
     }
 
     public WebElement getAlertNoAddress() {
         return pAlertNoAddress;
+    }
+
+    public WebElement getAddressAlias() {
+        return addressAlias;
     }
 }
