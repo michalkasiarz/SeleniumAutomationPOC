@@ -13,7 +13,7 @@ import static org.junit.Assert.assertFalse;
 public class AddWishlistItemAndDeleteTest extends BaseTest {
 
     @Test
-    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException, NoSuchElementException {
+    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException, NoSuchElementException, InterruptedException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         waitForLoad(driver);
@@ -33,7 +33,7 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
         myWishlistsPage.deleteItemFromWishlist("shoes");
         waitForLoad(driver);
         driver.navigate().refresh();
-        waitForLoad(driver);
+        Thread.sleep(3000);
         assertFalse(myWishlistsPage.checkIfItemExists("shoes"));
     }
 }
