@@ -8,12 +8,12 @@ import org.openqa.selenium.NoSuchElementException;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class AddWishlistItemAndDeleteTest extends BaseTest {
 
     @Test
-    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException, NoSuchElementException, InterruptedException {
+    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException, NoSuchElementException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         waitForLoad(driver);
@@ -31,9 +31,7 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
         myWishlistsPage.enterItemName("trousers");
         myWishlistsPage.clickOnSaveItemButton();
         myWishlistsPage.deleteItemFromWishlist("shoes");
-        waitForLoad(driver);
-        driver.navigate().refresh();
-        Thread.sleep(5000);
-        assertFalse(myWishlistsPage.checkIfItemExists("shoes"));
+        assertTrue(myWishlistsPage.checkIfItemExists("trousers"));
+        assertTrue(myWishlistsPage.checkIfItemExists("jacket"));
     }
 }
