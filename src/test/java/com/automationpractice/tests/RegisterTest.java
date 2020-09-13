@@ -7,6 +7,8 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class RegisterTest extends BaseTest {
 
@@ -19,6 +21,8 @@ public class RegisterTest extends BaseTest {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
+        assertTrue(myAccountPage.getButtonWithAccountOwnerName().isDisplayed());
         myAccountPage.clickOnLogoutButton();
+        assertFalse(myAccountPage.getButtonWithAccountOwnerName().isDisplayed());
     }
 }

@@ -35,10 +35,11 @@ public class MyWishlistsPage extends BasePage {
         String regex = "\\d{5}";
         Pattern validCharacterPattern = Pattern.compile(regex);
         Matcher matcher = validCharacterPattern.matcher(itemOnclickAttribute);
-        boolean b = matcher.find();
+        matcher.find();
         String itemId = matcher.group();
         item = driver.findElement(By.xpath("//a[contains(@onclick, 'wishlist_" + itemId + "')]"));
         item.click();
         driver.switchTo().alert().accept();
     }
+
 }
