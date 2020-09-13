@@ -4,14 +4,15 @@ import com.automationpractice.BaseTest;
 import com.automationpractice.utils.User;
 import org.junit.Test;
 
+import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class RegisterAndLoginTest extends BaseTest {
 
     @Test
-    public void RegisterAndloginTest() throws ParseException {
+    public void RegisterAndloginTest() throws ParseException, NoSuchAlgorithmException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         loginPage.fillEmailRegister(randomUser.getEmail());
@@ -25,7 +26,7 @@ public class RegisterAndLoginTest extends BaseTest {
         loginPage.fillPasswordLogin(randomUser.getPassword());
         loginPage.clickOnSignInButtonLogin();
         waitForLoad(driver);
-        assertTrue(myAccountPage.getButtonWithAccountOwnerName().getText().equals(randomUser.getFirstNamePersonalInfo() + " " + randomUser.getLastNamePersonalInfo()));
+        assertEquals(myAccountPage.getButtonWithAccountOwnerName().getText(), randomUser.getFirstNamePersonalInfo() + " " + randomUser.getLastNamePersonalInfo());
         myAccountPage.clickOnLogoutButton();
     }
 
