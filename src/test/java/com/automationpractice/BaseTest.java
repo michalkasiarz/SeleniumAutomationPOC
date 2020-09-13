@@ -31,6 +31,7 @@ public abstract class BaseTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         landingPage = new LandingPage(driver);
         driver.get("http://automationpractice.com");
