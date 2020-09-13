@@ -5,15 +5,19 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
 
     protected WebDriver driver;
+    protected WebDriverWait wait;
 
     protected LandingPage landingPage;
     protected LoginPage loginPage;
@@ -33,6 +37,7 @@ public abstract class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         landingPage = new LandingPage(driver);
         driver.get("http://automationpractice.com");
         loginPage = new LoginPage(driver);
@@ -46,5 +51,14 @@ public abstract class BaseTest {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    protected void waitForLoad(WebDriver driver) {
+        ExpectedCondition<Boolean> pageLoadCondition = new
+                ExpectedCondition<Boolean>() {
+                    public Boolean apply(WebDriver driver) {
+                        return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+                    }
+                };
     }
 }

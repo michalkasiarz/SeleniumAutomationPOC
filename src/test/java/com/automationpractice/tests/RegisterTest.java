@@ -5,9 +5,7 @@ import com.automationpractice.utils.User;
 import org.junit.Test;
 
 import java.text.ParseException;
-import java.util.concurrent.TimeUnit;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class RegisterTest extends BaseTest {
@@ -18,11 +16,10 @@ public class RegisterTest extends BaseTest {
         landingPage.clickButtonSignIn();
         loginPage.fillEmailRegister(randomUser.getEmail());
         loginPage.clickOnCreateAccountButtonRegister();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        waitForLoad(driver);
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
-        assertTrue(myAccountPage.getButtonWithAccountOwnerName().isDisplayed());
+        assertTrue(myAccountPage.getButtonWithAccountOwnerName().getText().equals(randomUser.getFirstNamePersonalInfo() + " " + randomUser.getLastNamePersonalInfo()));
         myAccountPage.clickOnLogoutButton();
-        assertFalse(myAccountPage.getButtonWithAccountOwnerName().isDisplayed());
     }
 }
