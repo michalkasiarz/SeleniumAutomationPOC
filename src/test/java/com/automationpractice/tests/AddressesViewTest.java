@@ -22,7 +22,6 @@ public class AddressesViewTest extends BaseTest {
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
         myAccountPage.clickOnButtonMyAddresses();
-        System.out.println(myAddresses.getAddressAlias().getText());
         assertNotNull(myAddresses.getAddressAlias().getText());
     }
 }

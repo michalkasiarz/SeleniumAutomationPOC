@@ -33,7 +33,7 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
         myWishlistsPage.deleteItemFromWishlist("shoes");
         waitForLoad(driver);
         driver.navigate().refresh();
-        Thread.sleep(3000);
+        Thread.sleep(5000);
         assertFalse(myWishlistsPage.checkIfItemExists("shoes"));
     }
 }
