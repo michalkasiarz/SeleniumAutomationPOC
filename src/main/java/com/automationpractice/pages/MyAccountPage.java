@@ -16,6 +16,21 @@ public class MyAccountPage extends BasePage {
     @FindBy(css = "div.shopping_cart")
     private WebElement buttonShoppingCart;
 
+    @FindBy(css = "a[title='Orders']")
+    private WebElement buttonOrderHistoryAndDetails;
+
+    @FindBy(css = "a[title='Credit slips']")
+    private WebElement buttonMyCreditSlips;
+
+    @FindBy(css = "a[title='Addresses']")
+    private WebElement buttonMyAddresses;
+
+    @FindBy(css = "a[title='Information']")
+    private WebElement buttonMyPersonalInformation;
+
+    @FindBy(css = "a[title='My wishlists']")
+    private WebElement buttonMyWishlists;
+
     public MyAccountPage(WebDriver driver) {
         super(driver);
     }
@@ -31,4 +46,25 @@ public class MyAccountPage extends BasePage {
     public void clickOnOwnerNamedButton() {
         buttonWithAccountOwnerName.click();
     }
+
+    public void clickOnOrderHistoryAndDetailsButton() {
+        buttonOrderHistoryAndDetails.click();
+    }
+
+    public void clickOnButtonMyCreditSlips() {
+        buttonMyCreditSlips.click();
+    }
+
+    public void clickOnButtonMyAddresses() {
+        buttonMyAddresses.click();
+    }
+
+    public void clickOnButtonMyPersonalInfo() {
+        buttonMyPersonalInformation.click();
+    }
+
+    public void clickOnButtonMyWishlists() {
+        buttonMyWishlists.click();
+    }
+
 }
