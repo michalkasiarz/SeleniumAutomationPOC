@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.text.ParseException;
 
+import static org.junit.Assert.assertTrue;
+
 public class RegisterAndLoginTest extends BaseTest {
 
     @Test
@@ -16,11 +18,14 @@ public class RegisterAndLoginTest extends BaseTest {
         loginPage.clickOnCreateAccountButtonRegister();
         registerPage.fillRegistrationForm(randomUser);
         registerPage.clickButtonRegister();
+        waitForLoad(driver);
         myAccountPage.clickOnLogoutButton();
         loginPage.clickOnSignInButtonLogin();
         loginPage.fillEmailLogin(randomUser.getEmail());
         loginPage.fillPasswordLogin(randomUser.getPassword());
         loginPage.clickOnSignInButtonLogin();
+        waitForLoad(driver);
+        assertTrue(myAccountPage.getButtonWithAccountOwnerName().getText().equals(randomUser.getFirstNamePersonalInfo() + " " + randomUser.getLastNamePersonalInfo()));
         myAccountPage.clickOnLogoutButton();
     }
 

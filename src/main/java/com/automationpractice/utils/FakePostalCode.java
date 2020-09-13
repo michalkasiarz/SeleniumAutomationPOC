@@ -1,23 +1,24 @@
 package com.automationpractice.utils;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class FakePostalCode {
 
     private String postalCode;
+    private Random random = SecureRandom.getInstanceStrong();
 
     public String generateFakePostalCode() {
-        Random random = new Random();
-
-        String postalCode = "";
+        StringBuilder generatedPostalCode = new StringBuilder();
         for (int i = 0; i < 5; i++) {
             String digit = String.valueOf(random.nextInt(10));
-            postalCode += digit;
+            generatedPostalCode.append(digit);
         }
-        return postalCode;
+        return generatedPostalCode.toString();
     }
 
-    public FakePostalCode() {
+    public FakePostalCode() throws NoSuchAlgorithmException {
         this.postalCode = generateFakePostalCode();
     }
 
