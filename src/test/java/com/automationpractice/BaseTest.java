@@ -58,7 +58,7 @@ public abstract class BaseTest {
     protected void waitForLoad(WebDriver driver) {
         ExpectedCondition<Boolean> pageLoadCondition = driver1 -> {
             assert driver1 != null;
-            driver1.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+            driver1.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             return ((JavascriptExecutor) driver1).executeScript("return document.readyState").equals("complete");
         };
     }
