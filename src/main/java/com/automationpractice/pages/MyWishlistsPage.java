@@ -2,6 +2,7 @@ package com.automationpractice.pages;
 
 import com.automationpractice.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -31,15 +32,25 @@ public class MyWishlistsPage extends BasePage {
 
     public void deleteItemFromWishlist(String itemName) {
         WebElement item = driver.findElement(By.xpath("//*[contains(text(), '" + itemName + "')]"));
+        String itemId = "";
         String itemOnclickAttribute = item.getAttribute("onclick");
         String regex = "\\d{5}";
         Pattern validCharacterPattern = Pattern.compile(regex);
         Matcher matcher = validCharacterPattern.matcher(itemOnclickAttribute);
-        matcher.find();
-        String itemId = matcher.group();
+        if (matcher.find()) {
+            itemId = matcher.group();
+        }
         item = driver.findElement(By.xpath("//a[contains(@onclick, 'wishlist_" + itemId + "')]"));
         item.click();
         driver.switchTo().alert().accept();
     }
 
+    public boolean checkIfItemExists(String itemName) {
+        try {
+            driver.findElement(By.xpath("//*[contains(text(), '" + itemName + "')]"));
+            return true;
+        } catch (NoSuchElementException exception) {
+            return false;
+        }
+    }
 }

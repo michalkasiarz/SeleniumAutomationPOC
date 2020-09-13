@@ -17,15 +17,12 @@ public class User {
     private final String dateOfBirthDay;
     private final String dateOfBirthMonth;
     private final String dateOfBirthYear;
-    private final String firstNameAddress;
-    private final String lastNameAddress;
     private final String addressAddress;
     private final String cityAddress;
     private final String stateAddress;
     private final String postalCodeAddress;
     private final String countryAddress;
     private final String mobilePhone;
-    private final String alias;
 
     public User() throws ParseException, NoSuchAlgorithmException {
         Faker faker = new Faker(new Locale("en-US"));
@@ -40,8 +37,6 @@ public class User {
         dateOfBirthMonth = birthdayDate.getMonthOfBirth();
         dateOfBirthYear = birthdayDate.getYearOfBirth();
 
-        firstNameAddress = firstNamePersonalInfo;
-        lastNameAddress = lastNamePersonalInfo;
         addressAddress = faker.address().fullAddress();
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
@@ -50,7 +45,6 @@ public class User {
         postalCodeAddress = fakePostalCode.getPostalCode();
         countryAddress = "United States";
         mobilePhone = faker.phoneNumber().cellPhone();
-        alias = faker.address().secondaryAddress();
     }
 
     public String getTitle() {
@@ -85,14 +79,6 @@ public class User {
         return dateOfBirthYear;
     }
 
-    public String getFirstNameAddress() {
-        return firstNameAddress;
-    }
-
-    public String getLastNameAddress() {
-        return lastNameAddress;
-    }
-
     public String getAddressAddress() {
         return addressAddress;
     }
@@ -111,10 +97,6 @@ public class User {
 
     public String getMobilePhone() {
         return mobilePhone;
-    }
-
-    public String getAlias() {
-        return alias;
     }
 
     public String getPostalCodeAddress() { return postalCodeAddress; }

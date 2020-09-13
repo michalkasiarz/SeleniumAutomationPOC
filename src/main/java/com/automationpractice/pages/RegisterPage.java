@@ -149,14 +149,11 @@ public class RegisterPage extends BasePage {
         enterLastNamePersonalInfo(user.getLastNamePersonalInfo());
         enterPassword(user.getPassword());
         selectBirthdate(user);
-        enterFirstNameForAddress(user.getFirstNameAddress());
-        enterLastNameForAddress(user.getLastNameAddress());
         enterFullAddress(user.getAddressAddress());
         enterCity(user.getCityAddress());
         selectState(user);
         enterPostalCode(user.getPostalCodeAddress());
         selectCountry(user);
         enterMobilePhone(user.getMobilePhone());
-        enterAliasAddress(user.getAlias());
     }
 }

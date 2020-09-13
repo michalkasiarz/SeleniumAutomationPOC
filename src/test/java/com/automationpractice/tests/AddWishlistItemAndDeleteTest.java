@@ -3,14 +3,17 @@ package com.automationpractice.tests;
 import com.automationpractice.BaseTest;
 import com.automationpractice.utils.User;
 import org.junit.Test;
+import org.openqa.selenium.NoSuchElementException;
 
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
+import static org.junit.Assert.assertFalse;
+
 public class AddWishlistItemAndDeleteTest extends BaseTest {
 
     @Test
-    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException {
+    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException, NoSuchElementException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         waitForLoad(driver);
@@ -28,5 +31,9 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
         myWishlistsPage.enterItemName("trousers");
         myWishlistsPage.clickOnSaveItemButton();
         myWishlistsPage.deleteItemFromWishlist("shoes");
+        waitForLoad(driver);
+        driver.navigate().refresh();
+        waitForLoad(driver);
+        assertFalse(myWishlistsPage.checkIfItemExists("shoes"));
     }
 }
