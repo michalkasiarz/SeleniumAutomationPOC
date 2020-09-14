@@ -2,7 +2,6 @@ package com.automationpractice.utils;
 
 import com.github.javafaker.Faker;
 
-import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.util.Locale;
 import java.util.Random;
@@ -24,7 +23,7 @@ public class User {
     private final String countryAddress;
     private final String mobilePhone;
 
-    public User() throws ParseException, NoSuchAlgorithmException {
+    public User() throws ParseException {
         Faker faker = new Faker(new Locale("en-US"));
         title = new Random().nextBoolean() ? "Mr." : "Mrs.";
         firstNamePersonalInfo = faker.name().firstName();
@@ -41,8 +40,7 @@ public class User {
         cityAddress = faker.address().city();
         stateAddress = faker.address().state();
 
-        FakePostalCode fakePostalCode = new FakePostalCode();
-        postalCodeAddress = fakePostalCode.getPostalCode();
+        postalCodeAddress = String.valueOf(new Random().nextInt(90000) + 10000);
         countryAddress = "United States";
         mobilePhone = faker.phoneNumber().cellPhone();
     }
@@ -100,4 +98,8 @@ public class User {
     }
 
     public String getPostalCodeAddress() { return postalCodeAddress; }
+
+    public String getFullName() {
+        return firstNamePersonalInfo + " " + lastNamePersonalInfo;
+    }
 }

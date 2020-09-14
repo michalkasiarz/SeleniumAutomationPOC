@@ -26,23 +26,14 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void fillEmailLogin(String email) {
+    public void login(String email, String password) {
         inputEmailLogin.sendKeys(email);
-    }
-
-    public void fillPasswordLogin(String password) {
         inputPasswordLogin.sendKeys(password);
-    }
-
-    public void clickOnSignInButtonLogin() {
         buttonSignInLogin.click();
     }
 
-    public void fillEmailRegister(String email) {
+    public void preregister(String email) {
         inputEmailRegister.sendKeys(email);
-    }
-
-    public void clickOnCreateAccountButtonRegister() {
         buttonCreateAccount.click();
     }
 }

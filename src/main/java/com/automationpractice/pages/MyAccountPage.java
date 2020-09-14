@@ -67,35 +67,7 @@ public class MyAccountPage extends BasePage {
         buttonMyWishlists.click();
     }
 
-    public WebElement getButtonWithAccountOwnerName() {
-        return buttonWithAccountOwnerName;
-    }
-
-    public WebElement getButtonLogout() {
-        return buttonLogout;
-    }
-
-    public WebElement getButtonShoppingCart() {
-        return buttonShoppingCart;
-    }
-
-    public WebElement getButtonOrderHistoryAndDetails() {
-        return buttonOrderHistoryAndDetails;
-    }
-
-    public WebElement getButtonMyCreditSlips() {
-        return buttonMyCreditSlips;
-    }
-
-    public WebElement getButtonMyAddresses() {
-        return buttonMyAddresses;
-    }
-
-    public WebElement getButtonMyPersonalInformation() {
-        return buttonMyPersonalInformation;
-    }
-
-    public WebElement getButtonMyWishlists() {
-        return buttonMyWishlists;
+    public String getOwnerName() {
+        return buttonWithAccountOwnerName.getText();
     }
 }

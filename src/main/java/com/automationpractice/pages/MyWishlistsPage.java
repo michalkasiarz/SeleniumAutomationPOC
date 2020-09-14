@@ -2,7 +2,6 @@ package com.automationpractice.pages;
 
 import com.automationpractice.BasePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -46,11 +45,6 @@ public class MyWishlistsPage extends BasePage {
     }
 
     public boolean checkIfItemExists(String itemName) {
-        try {
-            driver.findElement(By.xpath("//*[contains(text(), '" + itemName + "')]"));
-            return true;
-        } catch (NoSuchElementException exception) {
-            return false;
-        }
+        return !driver.findElements(By.xpath("//*[contains(text(), '" + itemName + "')]")).isEmpty();
     }
 }

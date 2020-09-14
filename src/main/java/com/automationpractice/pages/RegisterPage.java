@@ -70,7 +70,7 @@ public class RegisterPage extends BasePage {
         super(driver);
     }
 
-    public void chooseTitle(User user) {
+    private void chooseTitle(User user) {
         if (user.getTitle().equals("Mr.")) {
             radioButtonMr.click();
         } else {
@@ -78,19 +78,7 @@ public class RegisterPage extends BasePage {
         }
     }
 
-    public void enterFirstNamePersonalInfo(String firstName) {
-        inputFirstNamePersonalInfo.sendKeys(firstName);
-    }
-
-    public void enterLastNamePersonalInfo(String lastName) {
-        inputLastNamePersonalInfo.sendKeys(lastName);
-    }
-
-    public void enterPassword(String password) {
-        inputPassword.sendKeys(password);
-    }
-
-    public void selectBirthdate(User user) {
+    private void selectBirthdate(User user) {
         Select selectDay = new Select(selectDays);
         selectDay.selectByValue(user.getDateOfBirthDay());
 
@@ -101,59 +89,28 @@ public class RegisterPage extends BasePage {
         selectYear.selectByVisibleText(user.getDateOfBirthYear() + "  ");
     }
 
-    public void enterFirstNameForAddress(String firstName) {
-        inputFirstNameAddress.sendKeys(firstName);
-    }
-
-    public void enterLastNameForAddress(String lastName) {
-        inputLastNameAddress.sendKeys(lastName);
-    }
-
-    public void enterFullAddress(String address) {
-        inputAddressAddress.sendKeys(address);
-    }
-
-    public void enterCity(String city) {
-        inputCityAddress.sendKeys(city);
-    }
-
-    public void selectState(User user) {
+    private void selectState(User user) {
         Select selectState = new Select(selectStateAddress);
         selectState.selectByVisibleText(user.getStateAddress());
     }
 
-    public void enterPostalCode(String postalCode) {
-        inputPostalCodeAddress.sendKeys(postalCode);
-    }
-
-    public void selectCountry(User user) {
+    private void selectCountry(User user) {
         Select selectCountry = new Select(selectCountryAddress);
         selectCountry.selectByVisibleText(user.getCountryAddress());
     }
 
-    public void enterMobilePhone(String mobilePhoneNumber) {
-        inputMobilePhoneAddress.sendKeys(mobilePhoneNumber);
-    }
-
-    public void enterAliasAddress(String aliasAddress) {
-        inputAliasAddress.sendKeys(aliasAddress);
-    }
-
-    public void clickButtonRegister() {
-        buttonRegister.click();
-    }
-
-    public void fillRegistrationForm(User user) {
+    public void fillRegistrationFormAndRegister(User user) {
         chooseTitle(user);
-        enterFirstNamePersonalInfo(user.getFirstNamePersonalInfo());
-        enterLastNamePersonalInfo(user.getLastNamePersonalInfo());
-        enterPassword(user.getPassword());
+        inputFirstNamePersonalInfo.sendKeys(user.getFirstNamePersonalInfo());
+        inputLastNamePersonalInfo.sendKeys(user.getLastNamePersonalInfo());
+        inputPassword.sendKeys(user.getPassword());
         selectBirthdate(user);
-        enterFullAddress(user.getAddressAddress());
-        enterCity(user.getCityAddress());
+        inputAddressAddress.sendKeys(user.getAddressAddress());
+        inputCityAddress.sendKeys(user.getCityAddress());
         selectState(user);
-        enterPostalCode(user.getPostalCodeAddress());
+        inputPostalCodeAddress.sendKeys(user.getPostalCodeAddress());
         selectCountry(user);
-        enterMobilePhone(user.getMobilePhone());
+        inputMobilePhoneAddress.sendKeys(user.getMobilePhone());
+        buttonRegister.click();
     }
 }

@@ -5,7 +5,6 @@ import com.automationpractice.utils.User;
 import org.junit.Test;
 import org.openqa.selenium.NoSuchElementException;
 
-import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 
 import static org.junit.Assert.assertTrue;
@@ -13,17 +12,13 @@ import static org.junit.Assert.assertTrue;
 public class AddWishlistItemAndDeleteTest extends BaseTest {
 
     @Test
-    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchAlgorithmException, NoSuchElementException {
+    public void addItemToWishListAndDeleteIt() throws ParseException, NoSuchElementException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
-        waitForLoad(driver);
-        loginPage.fillEmailRegister(randomUser.getEmail());
-        loginPage.clickOnCreateAccountButtonRegister();
-        waitForLoad(driver);
-        registerPage.fillRegistrationForm(randomUser);
-        registerPage.clickButtonRegister();
+        loginPage.preregister(randomUser.getEmail());
+        registerPage.fillRegistrationFormAndRegister(randomUser);
+        myAccountPage.clickOnLogoutButton();
         myAccountPage.clickOnButtonMyWishlists();
-        waitForLoad(driver);
         myWishlistsPage.enterItemName("shoes");
         myWishlistsPage.clickOnSaveItemButton();
         myWishlistsPage.enterItemName("jacket");

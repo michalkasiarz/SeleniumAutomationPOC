@@ -5,11 +5,9 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
@@ -53,13 +51,5 @@ public abstract class BaseTest {
         if (driver != null) {
             driver.quit();
         }
-    }
-
-    protected void waitForLoad(WebDriver driver) {
-        ExpectedCondition<Boolean> pageLoadCondition = driver1 -> {
-            assert driver1 != null;
-            driver1.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-            return ((JavascriptExecutor) driver1).executeScript("return document.readyState").equals("complete");
-        };
     }
 }

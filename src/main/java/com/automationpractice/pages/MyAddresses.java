@@ -21,7 +21,7 @@ public class MyAddresses extends BasePage {
         return pAlertNoAddress;
     }
 
-    public WebElement getAddressAlias() {
-        return addressAlias;
+    public String getAddressAlias() {
+        return addressAlias.getText();
     }
 }
