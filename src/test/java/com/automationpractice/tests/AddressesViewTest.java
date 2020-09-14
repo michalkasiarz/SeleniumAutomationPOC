@@ -16,7 +16,6 @@ public class AddressesViewTest extends BaseTest {
         landingPage.clickButtonSignIn();
         loginPage.preregister(randomUser.getEmail());
         registerPage.fillRegistrationFormAndRegister(randomUser);
-        myAccountPage.clickOnLogoutButton();
         myAccountPage.clickOnButtonMyAddresses();
         assertNotNull(myAddresses.getAddressAlias());
     }

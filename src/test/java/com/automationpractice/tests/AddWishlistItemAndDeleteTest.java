@@ -17,7 +17,6 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
         landingPage.clickButtonSignIn();
         loginPage.preregister(randomUser.getEmail());
         registerPage.fillRegistrationFormAndRegister(randomUser);
-        myAccountPage.clickOnLogoutButton();
         myAccountPage.clickOnButtonMyWishlists();
         myWishlistsPage.enterItemName("shoes");
         myWishlistsPage.clickOnSaveItemButton();
