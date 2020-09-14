@@ -6,8 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static org.awaitility.Awaitility.await;
 
 public class MyWishlistsPage extends BasePage {
 
@@ -21,11 +24,8 @@ public class MyWishlistsPage extends BasePage {
         super(driver);
     }
 
-    public void enterItemName(String itemName) {
+    public void addItemToWishlist(String itemName) {
         inputItemName.sendKeys(itemName);
-    }
-
-    public void clickOnSaveItemButton() {
         buttonSaveItem.click();
     }
 
@@ -42,9 +42,16 @@ public class MyWishlistsPage extends BasePage {
         item = driver.findElement(By.xpath("//a[contains(@onclick, 'wishlist_" + itemId + "')]"));
         item.click();
         driver.switchTo().alert().accept();
+        driver.switchTo().defaultContent();
     }
 
     public boolean checkIfItemExists(String itemName) {
-        return !driver.findElements(By.xpath("//*[contains(text(), '" + itemName + "')]")).isEmpty();
+        await().atMost(10, TimeUnit.SECONDS).until(() -> !driver.findElements(By.xpath("//*[contains(text(), '" + itemName + "')]")).isEmpty());
+        return true;
+    }
+
+    public boolean checkIfItemNotExist(String itemName) {
+        await().atMost(10, TimeUnit.SECONDS).until(() -> driver.findElements(By.xpath("//*[contains(text(), '" + itemName + "')]")).isEmpty());
+        return false;
     }
 }

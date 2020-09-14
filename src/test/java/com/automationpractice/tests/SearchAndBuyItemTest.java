@@ -6,17 +6,15 @@ import org.junit.Test;
 
 import java.text.ParseException;
 
-import static org.junit.Assert.assertNotNull;
-
-public class AddressesViewTest extends BaseTest {
+public class SearchAndBuyItemTest extends BaseTest {
 
     @Test
-    public void addressesViewTest() throws ParseException {
+    public void searchAndBuyItem() throws ParseException {
         User randomUser = new User();
         landingPage.clickButtonSignIn();
         loginPage.preregister(randomUser.getEmail());
         registerPage.fillRegistrationFormAndRegister(randomUser);
-        myAccountPage.clickOnButtonMyAddresses();
-        assertNotNull(myAddressesPage.getAddressAlias());
+        landingPage.searchForItem("dress");
     }
+
 }

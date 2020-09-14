@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class MyAddresses extends BasePage {
+public class MyAddressesPage extends BasePage {
 
     @FindBy(css = "p.alert.alert-warning")
     private WebElement pAlertNoAddress;
@@ -13,7 +13,7 @@ public class MyAddresses extends BasePage {
     @FindBy(css = "h3.page-subheading")
     private WebElement addressAlias;
 
-    public MyAddresses(WebDriver driver) {
+    public MyAddressesPage(WebDriver driver) {
         super(driver);
     }
 

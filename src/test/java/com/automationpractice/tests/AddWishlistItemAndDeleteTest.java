@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 
 import java.text.ParseException;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class AddWishlistItemAndDeleteTest extends BaseTest {
@@ -18,14 +19,12 @@ public class AddWishlistItemAndDeleteTest extends BaseTest {
         loginPage.preregister(randomUser.getEmail());
         registerPage.fillRegistrationFormAndRegister(randomUser);
         myAccountPage.clickOnButtonMyWishlists();
-        myWishlistsPage.enterItemName("shoes");
-        myWishlistsPage.clickOnSaveItemButton();
-        myWishlistsPage.enterItemName("jacket");
-        myWishlistsPage.clickOnSaveItemButton();
-        myWishlistsPage.enterItemName("trousers");
-        myWishlistsPage.clickOnSaveItemButton();
+        myWishlistsPage.addItemToWishlist("shoes");
+        myWishlistsPage.addItemToWishlist("jacket");
+        myWishlistsPage.addItemToWishlist("trousers");
         myWishlistsPage.deleteItemFromWishlist("shoes");
         assertTrue(myWishlistsPage.checkIfItemExists("trousers"));
         assertTrue(myWishlistsPage.checkIfItemExists("jacket"));
+        assertFalse(myWishlistsPage.checkIfItemNotExist("shoes"));
     }
 }

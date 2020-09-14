@@ -8,21 +8,23 @@ import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
 
     protected WebDriver driver;
-    protected WebDriverWait wait;
 
     protected LandingPage landingPage;
     protected LoginPage loginPage;
     protected RegisterPage registerPage;
     protected MyAccountPage myAccountPage;
     protected MyWishlistsPage myWishlistsPage;
-    protected MyAddresses myAddresses;
+    protected MyAddressesPage myAddressesPage;
+    protected MyCreditSlipsPage myCreditSlipsPage;
+    protected MyPersonalInformationPage myPersonalInformationPage;
+    protected OrderHistoryAndDetailsPage orderHistoryAndDetailsPage;
+    protected ShoppingCartPage shoppingCartPage;
 
     @BeforeClass
     public static void setupWebDriverManager() {
@@ -36,14 +38,17 @@ public abstract class BaseTest {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        WebDriverWait wait = new WebDriverWait(driver, 10);
         landingPage = new LandingPage(driver);
         driver.get("http://automationpractice.com");
         loginPage = new LoginPage(driver);
         registerPage = new RegisterPage(driver);
         myAccountPage = new MyAccountPage(driver);
         myWishlistsPage = new MyWishlistsPage(driver);
-        myAddresses = new MyAddresses(driver);
+        myAddressesPage = new MyAddressesPage(driver);
+        myCreditSlipsPage = new MyCreditSlipsPage(driver);
+        myPersonalInformationPage = new MyPersonalInformationPage(driver);
+        orderHistoryAndDetailsPage = new OrderHistoryAndDetailsPage(driver);
+        shoppingCartPage = new ShoppingCartPage(driver);
     }
 
     @After

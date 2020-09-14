@@ -17,6 +17,6 @@ public class RegisterTest extends BaseTest {
         loginPage.preregister(randomUser.getEmail());
         registerPage.fillRegistrationFormAndRegister(randomUser);
         assertEquals(myAccountPage.getOwnerName(), randomUser.getFullName());
-        myAccountPage.clickOnLogoutButton();
+       // myAccountPage.clickOnLogoutButton();
     }
 }
