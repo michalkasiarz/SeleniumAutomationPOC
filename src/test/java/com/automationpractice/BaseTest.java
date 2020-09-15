@@ -25,6 +25,7 @@ public abstract class BaseTest {
     protected MyPersonalInformationPage myPersonalInformationPage;
     protected OrderHistoryAndDetailsPage orderHistoryAndDetailsPage;
     protected ShoppingCartPage shoppingCartPage;
+    protected SearchPage searchPage;
 
     @BeforeClass
     public static void setupWebDriverManager() {
@@ -49,6 +50,7 @@ public abstract class BaseTest {
         myPersonalInformationPage = new MyPersonalInformationPage(driver);
         orderHistoryAndDetailsPage = new OrderHistoryAndDetailsPage(driver);
         shoppingCartPage = new ShoppingCartPage(driver);
+        searchPage = new SearchPage(driver);
     }
 
     @After

@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.text.ParseException;
 
+import static org.junit.Assert.assertEquals;
+
 public class SearchAndBuyItemTest extends BaseTest {
 
     @Test
@@ -15,6 +17,8 @@ public class SearchAndBuyItemTest extends BaseTest {
         loginPage.preregister(randomUser.getEmail());
         registerPage.fillRegistrationFormAndRegister(randomUser);
         landingPage.searchForItem("dress");
+        searchPage.addProductToCartAndProceedCheckout();
+        shoppingCartPage.confirmOrder();
+        assertEquals("Your order on My Store is complete.", shoppingCartPage.getOrderConfirmationInfo());
     }
-
 }
