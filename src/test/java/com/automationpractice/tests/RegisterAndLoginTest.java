@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import java.text.ParseException;
 
+import static org.junit.Assert.assertEquals;
+
 public class RegisterAndLoginTest extends BaseTest {
 
     @Test
@@ -16,6 +18,7 @@ public class RegisterAndLoginTest extends BaseTest {
         registerPage.fillRegistrationFormAndRegister(randomUser);
         myAccountPage.clickOnLogoutButton();
         loginPage.login(randomUser.getEmail(), randomUser.getPassword());
+        assertEquals(myAccountPage.getOwnerName(), randomUser.getFullName());
         myAccountPage.clickOnLogoutButton();
     }
 }
